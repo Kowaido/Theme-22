@@ -1,0 +1,203 @@
+{
+    /// <summary>
+    /// Создаем Мой класс
+    /// </summary>
+    class MyClass
+    {
+        /// <summary>
+        /// Поле change
+        /// </summary>
+        public string change; 
+    }
+}
+
+{
+    /// <summary>
+    /// Структура MyStruct
+    /// </summary>
+    struct MyStruct
+    {
+        /// <summary>
+        /// Поле change
+        /// </summary>
+        public string change;
+    }
+}
+
+{
+    /// <summary>
+    /// Структура NoteBook
+    /// </summary>
+    struct NoteBook
+    {
+        /// <summary>
+        /// Поле model
+        /// </summary>
+        public string model;
+        
+        /// <summary>
+        /// Поле manufacture
+        /// </summary>
+        public string manufacture;
+
+        /// <summary>
+        /// Поле price
+        /// </summary>
+        public double price;
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="model">модель</param>
+        /// <param name="manufacture">производитель</param>
+        /// <param name="price">цена</param>
+        public NoteBook(string model, string manufacture, double price)
+        {
+            this.model = model;
+            this.manufacture = manufacture;
+            this.price = price;
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по ноутбуку
+        /// </summary>
+        public void Info()
+        {
+            bool flag1 = false;
+            Console.WriteLine("Введите модель: ");
+            model = Console.ReadLine();
+            Console.WriteLine("Введите производителя: ");
+            manufacture = Console.ReadLine();
+            Console.WriteLine("Введите цену: ");
+            price = double.Parse(Console.ReadLine());
+
+
+            if(price < 3400)
+            {
+                while (flag1 == true)
+                {
+                    Console.WriteLine("Цена меньше, чем минимум стоимости ноутубука.");
+                    break;
+                }
+            }
+
+            Console.WriteLine($"Информация по ноутбуку: \n Модель-{model}, Производитель-{manufacture}, Цена - {price}");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Структура Book
+    /// </summary>
+    struct Book
+    {
+        /// <summary>
+        /// Поле namebook
+        /// </summary>
+        public string namebook;
+        /// <summary>
+        /// Поле fioauthor
+        /// </summary>
+        public string fioauthor;
+        /// <summary>
+        /// Поле yeardate
+        /// </summary>
+        public DateTime yeardate;
+        /// <summary>
+        /// Поле allptr
+        /// </summary>
+        public int allptr;
+
+        public Book(string namebook, string fioauthor, DateTime yeardate, int allptr)
+        {
+            this.namebook = namebook;
+            this.fioauthor = fioauthor;
+            this.yeardate = yeardate;
+            this.allptr = allptr;
+        }
+
+        public void Info()
+        {
+            Console.WriteLine("Введите название книги: ");
+            namebook = Console.ReadLine();
+            Console.WriteLine("Введите ФИО автора: ");
+            fioauthor = Console.ReadLine();
+            Console.WriteLine("Введите год издания: ");
+            yeardate = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Введите количество страниц: ");
+            allptr = int.Parse(Console.ReadLine());
+            
+            while (true)
+            {
+                if (allptr < 30)
+                {
+                    break;
+                }
+            }
+
+            Console.WriteLine($"Информация о книге: \nНазвание-{namebook}, ФИО Автора - {fioauthor}, Год издания - {yeardate}, Количество страниц - {allptr}");
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //1-Задание
+            MyClass myClass = new MyClass();
+            MyStruct myStruct = new MyStruct();
+
+            myClass.change = "не изменено";
+            myStruct.change = "не изменено";
+
+            ClassTaker(myClass);
+            StruktTaker(myStruct);
+
+            Console.WriteLine("myClass: " + myClass.change);
+            Console.WriteLine("myStruct: " + myStruct.change);
+
+            //2-Задание
+            NoteBook noteBook = new NoteBook();
+            noteBook.Info();
+
+            //3-Задание
+                        Book book = new Book();
+            Console.WriteLine("Введите количество книг: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] mass = new int[n];
+            for (int i = 0; i < mass[n]; i++)
+            {
+                book.Info();
+                if (i == mass[n])
+                {
+                    Console.WriteLine("Вы указали весь список.");
+                    break;
+                }
+
+                else if (i == mass[n += 5] && i != mass[n])
+                {
+                    Console.WriteLine("Хотите продолжить?");
+                    string choise = Console.ReadLine();
+                    if (choise == "Да" || choise == "да")
+                    {
+
+                    }
+                }
+            }
+            Console.ReadKey();
+        }
+
+        static void ClassTaker(MyClass myClass)
+        {
+            myClass.change = "изменено";
+        }
+
+        static void StruktTaker(MyStruct myStruct)
+        {
+            myStruct.change = "изменено";
+        }
+    }
+}
