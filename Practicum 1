@@ -119,23 +119,6 @@
 
         public void Info()
         {
-            Console.WriteLine("Введите название книги: ");
-            namebook = Console.ReadLine();
-            Console.WriteLine("Введите ФИО автора: ");
-            fioauthor = Console.ReadLine();
-            Console.WriteLine("Введите год издания: ");
-            yeardate = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Введите количество страниц: ");
-            allptr = int.Parse(Console.ReadLine());
-            
-            while (true)
-            {
-                if (allptr < 30)
-                {
-                    break;
-                }
-            }
-
             Console.WriteLine($"Информация о книге: \nНазвание-{namebook}, ФИО Автора - {fioauthor}, Год издания - {yeardate}, Количество страниц - {allptr}");
         }
     }
@@ -164,27 +147,63 @@
             noteBook.Info();
 
             //3-Задание
-                        Book book = new Book();
             Console.WriteLine("Введите количество книг: ");
             int n = int.Parse(Console.ReadLine());
-            int[] mass = new int[n];
-            for (int i = 0; i < mass[n]; i++)
+            int newBook = 0;
+            Book[] book = new Book[n];
+
+            for (int i = 0; i < n; i++)
             {
-                book.Info();
-                if (i == mass[n])
+                while (true)
                 {
-                    Console.WriteLine("Вы указали весь список.");
-                    break;
+                    Console.WriteLine($"Введите информацию о книге {i + 1}: ");
+                    Console.WriteLine("Введите название книги: ");
+                    string namebook = Console.ReadLine();
+                    Console.WriteLine("Введите ФИО автора: ");
+                    string fioauthor = Console.ReadLine();
+                    Console.WriteLine("Введите год издания: ");
+                    DateTime yeardate = DateTime.Parse(Console.ReadLine());
+                    Console.WriteLine("Введите количество страниц: ");
+                    int allptr = int.Parse(Console.ReadLine());
+
+                    while (true)
+                    {
+                        if (allptr < 30)
+                        {
+                            break;
+                        }
+                        break;
+                    }
+
+                    if (newBook == n)
+                    {
+                        Console.WriteLine("Вы указали весь список.");
+                        break;
+                    }
+
+                    else if (newBook % 5 == 0)
+                    {
+                        Console.WriteLine("Хотите продолжить? (да/нет)");
+                        string choise = Console.ReadLine().ToLower();
+                        if (choise != "да")
+                        {
+                            break;
+                        }
+                    }
+
+                    else if (newBook < (n = 0))
+                    {
+                        Console.WriteLine("Вы не можете указать не одной книги");
+                        break;
+                    }
+
+                    book[i] = new Book(namebook, fioauthor, yeardate, allptr);
+                    newBook++;
                 }
 
-                else if (i == mass[n += 5] && i != mass[n])
+                foreach (Book books in book)
                 {
-                    Console.WriteLine("Хотите продолжить?");
-                    string choise = Console.ReadLine();
-                    if (choise == "Да" || choise == "да")
-                    {
-
-                    }
+                    books.Info();
                 }
             }
             Console.ReadKey();
