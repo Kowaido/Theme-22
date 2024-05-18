@@ -178,7 +178,6 @@
                     if (newBook == n)
                     {
                         Console.WriteLine("Вы указали весь список.");
-                        break;
                     }
 
                     else if (newBook % 5 == 0)
